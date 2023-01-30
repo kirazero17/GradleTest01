@@ -107,7 +107,8 @@ public class LinkedList
         }
         else
         {
-            
+            this.head.next.prev = null;
+            this.head = this.head.next;
         }
         this.len--;
         return 0;
