@@ -8,17 +8,22 @@ package GradleTest01;
  *
  * @author longkg
  */
-public class LinkedList
+class LinkedList
 {
-    Node head;
-    Node tail;
-    short len;
+    private Node head;
+    private Node tail;
+    private short len;
+    public Node Head() {return this.head;}
+    public Node Tail() {return this.tail;}
+    public short Len() {return this.len;}
+    
     static class Node
     {
-        int num;
-        Node next;
-        Node prev;
-        Node(int d) {
+        private int num;
+        public int Num() {return this.num;}
+        private Node next;
+        private Node prev;
+        public Node(int d) {
             this.num = d;
             this.next = null;
             this.prev = null;
@@ -32,17 +37,17 @@ public class LinkedList
         this.tail = null;
     }
     
-    public int addTail(int d)
+    public int addTail(int value)
     {
         if (this.head == null)
         {
-            this.head = new Node(d);
+            this.head = new Node(value);
             this.tail = this.head;
         }
         else
         {
             //assign a new node to the 'next' pointẻr
-            this.tail.next = new Node(d);
+            this.tail.next = new Node(value);
             //link the next/newly created node (tail.next) with the tail as its 'prev'
             this.tail.next.prev = this.tail;
             //set the new tail
@@ -52,17 +57,17 @@ public class LinkedList
         return 0;
     }
     
-    public int addHead(int d)
+    public int addHead(int value)
     {
         if (this.tail == null)
         {
-            this.head = new Node(d);
+            this.head = new Node(value);
             this.tail = this.head;
         }
         else
         {
             //assign a new node to the 'prev' pointẻr
-            this.head.prev = new Node(d);
+            this.head.prev = new Node(value);
             //link the next/newly created node (head.prev) with the head as its 'next'
             this.head.prev.next = this.head;
             //set the new head
@@ -95,7 +100,7 @@ public class LinkedList
     
     public int delHead()
     {
-        if (this.tail == null)
+        if (this.len == 0)
         {
             System.out.println("There's no node to delete !");
             return -1;
@@ -111,6 +116,53 @@ public class LinkedList
             this.head = this.head.next;
         }
         this.len--;
+        return 0;
+    }
+    
+    public void printnode(int position)
+    {
+        if (position < 0 || position >= this.len)
+        {
+            System.out.println("There's no such position.");
+            return;
+        }
+        Node n;
+        if (position <= (this.len - 1) / 2)
+        {
+            n = this.head;
+            for(int i=0; i<position; i++)
+                n = n.next;
+        }
+        else
+        {
+            n = this.tail;
+            for(int i=len-1; i>position; i--)
+                n = n.prev;
+        }
+        System.out.println(n.num);
+    }
+    
+    public int editnode(int position, int value)
+    {
+        if (position < 0 || position >= this.len)
+        {
+            System.out.println("There's no such position.");
+            return -1;
+        }
+        Node n;
+        if (position < this.len / 2)
+        {
+            n = this.head;
+            for(int i=0; i<position; i++)
+                n = n.next;
+        }
+        else
+        {
+            n = this.tail;
+            for(int i=len-1; i>position; i++)
+                n = n.prev;
+        }
+        n.num = value;
         return 0;
     }
     
