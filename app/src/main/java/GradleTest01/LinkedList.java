@@ -32,7 +32,7 @@ public class LinkedList
         this.tail = null;
     }
     
-    public int addNode(int d)
+    public int addTail(int d)
     {
         if (head == null)
         {
@@ -41,15 +41,32 @@ public class LinkedList
         }
         else
         {
-            Node n = this.head;
-            //let n go to the furthest node from head
-            while (n.next != null)
-                n = n.next;
-            //assign a new node to the 'next' address and set it as the 'tail'
-            n.next = new Node(d);
-            this.tail = n.next;
-            //link the next/newly created node (n.next) with the last node (n)
-            n.next.prev = n;
+            //assign a new node to the 'next' pointẻr
+            this.tail.next = new Node(d);
+            //link the next/newly created node (tail.next) with the tail as its 'prev'
+            this.tail.next.prev = this.tail;
+            //set the new tail
+            this.tail = this.tail.next;
+        }
+        len++;
+        return 0;
+    }
+    
+    public int addHead(int d)
+    {
+        if (head == null)
+        {
+            this.head = new Node(d);
+            this.tail = this.head;
+        }
+        else
+        {
+            //assign a new node to the 'prev' pointẻr
+            this.head.prev = new Node(d);
+            //link the next/newly created node (head.prev) with the head as its 'next'
+            this.head.prev.next = this.head;
+            //set the new head
+            this.head = this.head.prev;
         }
         len++;
         return 0;
@@ -63,6 +80,7 @@ public class LinkedList
             System.out.print(n.num + "  ");
             n = n.next;
         }
+        System.out.println("");
     }
     
     public void prtnumback()
@@ -73,5 +91,6 @@ public class LinkedList
             System.out.print(n.num + "  ");
             n = n.prev;
         }
+        System.out.println("");
     }
 }

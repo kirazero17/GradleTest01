@@ -13,12 +13,14 @@ public class App
     public static int listtest2()
     {
         LinkedList lst1 = new LinkedList();
-        lst1.addNode(18);
-        lst1.addNode(35);
-        lst1.addNode(69);
+        lst1.addTail(18);
+        lst1.addTail(35);
+        lst1.addTail(69);
+        lst1.addHead(0);
         lst1.printnum();
-        System.out.println("\n");
         lst1.prtnumback();
+        System.out.println("Head: " + lst1.head.num);
+        System.out.println("Tail: " + lst1.tail.num);
         return 0;
     }
     
