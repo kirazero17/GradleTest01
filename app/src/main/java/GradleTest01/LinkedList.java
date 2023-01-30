@@ -27,14 +27,14 @@ public class LinkedList
 
     public LinkedList() 
     {
-        len = 0;
+        this.len = 0;
         this.head = null;
         this.tail = null;
     }
     
     public int addTail(int d)
     {
-        if (head == null)
+        if (this.head == null)
         {
             this.head = new Node(d);
             this.tail = this.head;
@@ -48,13 +48,13 @@ public class LinkedList
             //set the new tail
             this.tail = this.tail.next;
         }
-        len++;
+        this.len++;
         return 0;
     }
     
     public int addHead(int d)
     {
-        if (head == null)
+        if (this.tail == null)
         {
             this.head = new Node(d);
             this.tail = this.head;
@@ -68,7 +68,48 @@ public class LinkedList
             //set the new head
             this.head = this.head.prev;
         }
-        len++;
+        this.len++;
+        return 0;
+    }
+    
+    public int delTail()
+    {
+        if (this.len == 0)
+        {
+            System.out.println("There's no node to delete !");
+            return -1;
+        }
+        if (this.len == 1)
+        {
+            this.head = null;
+            this.tail = null;
+        }
+        else
+        {
+            this.tail.prev.next = null;
+            this.tail = this.tail.prev;
+        }
+        this.len--;
+        return 0;
+    }
+    
+    public int delHead()
+    {
+        if (this.tail == null)
+        {
+            System.out.println("There's no node to delete !");
+            return -1;
+        }
+        if (this.len == 1)
+        {
+            this.head = null;
+            this.tail = null;
+        }
+        else
+        {
+            
+        }
+        this.len--;
         return 0;
     }
     

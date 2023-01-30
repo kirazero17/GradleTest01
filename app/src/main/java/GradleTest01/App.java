@@ -21,6 +21,14 @@ public class App
         lst1.prtnumback();
         System.out.println("Head: " + lst1.head.num);
         System.out.println("Tail: " + lst1.tail.num);
+        System.out.println("Length: " + lst1.len);
+        
+        lst1.delTail();
+        lst1.printnum();
+        lst1.prtnumback();
+        System.out.println("\nHead: " + lst1.head.num);
+        System.out.println("Tail: " + lst1.tail.num);
+        System.out.println("Length: " + lst1.len);
         return 0;
     }
     
