@@ -11,36 +11,67 @@ package GradleTest01;
 public class LinkedList
 {
     Node head;
+    Node tail;
+    short len;
     static class Node
     {
-        int data;
+        int num;
         Node next;
-        Node() {
-            next = null;
-        }
+        Node prev;
         Node(int d) {
-            this.data = d;
+            this.num = d;
             this.next = null;
+            this.prev = null;
         }
     }
 
     public LinkedList() 
     {
+        len = 0;
         this.head = null;
+        this.tail = null;
     }
     
-    public LinkedList(int d) 
+    public int addNode(int d)
     {
-        this.head = new Node(d);
+        if (head == null)
+        {
+            this.head = new Node(d);
+            this.tail = this.head;
+        }
+        else
+        {
+            Node n = this.head;
+            //let n go to the furthest node from head
+            while (n.next != null)
+                n = n.next;
+            //assign a new node to the 'next' address and set it as the 'tail'
+            n.next = new Node(d);
+            this.tail = n.next;
+            //link the next/newly created node (n.next) with the last node (n)
+            n.next.prev = n;
+        }
+        len++;
+        return 0;
     }
     
-    public void print()
+    public void printnum()
     {
-        Node n = head;
+        Node n = this.head;
         while (n != null)
         {
-            System.out.print(n.data + "  ");
+            System.out.print(n.num + "  ");
             n = n.next;
+        }
+    }
+    
+    public void prtnumback()
+    {
+        Node n = this.tail;
+        while (n != null)
+        {
+            System.out.print(n.num + "  ");
+            n = n.prev;
         }
     }
 }

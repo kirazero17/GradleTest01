@@ -10,19 +10,20 @@ public class App
         return "Hello World! Yo !";
     }
     
-    public static int listtest()
+    public static int listtest2()
     {
-        LinkedList lst1 = new LinkedList(7);
-        LinkedList.Node secnd = new LinkedList.Node(13);
-        LinkedList.Node third = new LinkedList.Node(25);
-        lst1.head.next = secnd;
-        secnd.next = third;
-        lst1.print();
+        LinkedList lst1 = new LinkedList();
+        lst1.addNode(18);
+        lst1.addNode(35);
+        lst1.addNode(69);
+        lst1.printnum();
+        System.out.println("\n");
+        lst1.prtnumback();
         return 0;
     }
-
+    
     public static void main(String[] args) {
-        listtest();
+        listtest2();
         System.out.println("\n" + (new App().getGreeting()));
     }
 }
