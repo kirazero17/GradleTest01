@@ -10,7 +10,7 @@ public class App
         return "Hello World! Yo !";
     }
     
-    public static int listtest2()
+    public static int listtest()
     {
         LinkedList lst1 = new LinkedList();
         lst1.addTail(18);
@@ -19,21 +19,25 @@ public class App
         lst1.addHead(0);
         lst1.printnum();
         lst1.prtnumback();
-        System.out.println("Head: " + lst1.head.num);
-        System.out.println("Tail: " + lst1.tail.num);
-        System.out.println("Length: " + lst1.len);
+        System.out.println("Head: " + lst1.Head().Num());
+        System.out.println("Tail: " + lst1.Tail().Num());
+        System.out.println("Length: " + lst1.Len());
         
         lst1.delTail();
         lst1.printnum();
         lst1.prtnumback();
-        System.out.println("\nHead: " + lst1.head.num);
-        System.out.println("Tail: " + lst1.tail.num);
-        System.out.println("Length: " + lst1.len);
+        System.out.println("");
+        System.out.println("Head: " + lst1.Head().Num());
+        System.out.println("Tail: " + lst1.Tail().Num());
+        System.out.println("Length: " + lst1.Len());
+        lst1.printnode(1);
+        lst1.addHead(0);
+        lst1.printnode(2);
         return 0;
     }
     
     public static void main(String[] args) {
-        listtest2();
+        listtest();
         System.out.println("\n" + (new App().getGreeting()));
     }
 }
